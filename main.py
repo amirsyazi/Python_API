@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
@@ -9,6 +10,7 @@ def home():
 
 @app.route('/affordability_check', methods=['POST'])
 def affordability_check():
+    print("affordability_check endpoint hit")
     # Parse JSON request data
     data = request.json
     purchase_amount = data.get('purchase_amount')
@@ -40,4 +42,6 @@ def affordability_check():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Use Render's port
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
