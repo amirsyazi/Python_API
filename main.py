@@ -2,6 +2,11 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+
+@app.route('/')
+def home():
+    return "API is working!"
+
 @app.route('/affordability_check', methods=['POST'])
 def affordability_check():
     # Parse JSON request data
