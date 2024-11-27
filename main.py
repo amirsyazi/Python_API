@@ -1,8 +1,36 @@
 import os
+import random
+import datetime
+import json
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+# Predefined Spend Categories and Transaction Types
+SPEND_CATEGORIES = ["Essentials", "Transportation", "Lifestyle", "Debt Payments", "Savings and Investment"]
+TRANSACTION_TYPES = ["Income", "Expense", "Saving"]
+
+# Function to generate a single random transaction
+def generate_random_transaction():
+    # Generate random transaction data
+    date = (datetime.datetime.now() - datetime.timedelta(days=random.randint(0, 365))).strftime("%Y-%m-%d")
+    amount = round(random.uniform(50, 1000), 2)
+    category = random.choice(SPEND_CATEGORIES)
+    description = f"{category} expense" if category != "Savings and Investment" else "Savings or Investment contribution"
+    goal = None  # Set to None for now, but this can be filled in as needed
+    transaction_type = random.choice(TRANSACTION_TYPES)
+
+    # Create the transaction
+    transaction = {
+        "Amount": amount,
+        "Category": category,
+        "Date": date,
+        "Description": description,
+        "Goal": goal,
+        "Type": transaction_type
+    }
+
+    return transaction
 
 @app.route('/')
 def home():
@@ -40,6 +68,11 @@ def affordability_check():
         "remaining_category_budget": remaining_category_budget,
         "adjusted_budget": adjusted_budget
     })
+
+@app.route('/generate-transaction', methods=['GET'])
+def generate_transaction():
+    random_transaction = generate_random_transaction()
+    return jsonify(random_transaction)
 
 if __name__ == '__main__':
     # Use Render's port
