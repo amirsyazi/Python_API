@@ -10,13 +10,23 @@ app = Flask(__name__)
 SPEND_CATEGORIES = ["Essentials", "Transportation", "Lifestyle", "Debt Payments", "Savings and Investment"]
 TRANSACTION_TYPES = ["Income", "Expense", "Saving"]
 
-# Function to generate a single random transaction
+# Function to generate a single random transaction with realistic descriptions
 def generate_random_transaction():
     # Generate random transaction data
     date = (datetime.datetime.now() - datetime.timedelta(days=random.randint(0, 365))).strftime("%Y-%m-%d")
     amount = round(random.uniform(50, 1000), 2)
     category = random.choice(SPEND_CATEGORIES)
-    description = f"{category} expense" if category != "Savings and Investment" else "Savings or Investment contribution"
+    
+    # Generate a more realistic description based on the category
+    descriptions = {
+        "Essentials": ["Bought groceries from SuperMart", "Paid monthly rent", "Paid electricity bill", "Bought household essentials"],
+        "Transportation": ["Filled up fuel at Shell", "Paid for a taxi ride", "Bought a monthly bus pass", "Car maintenance service"],
+        "Lifestyle": ["Gym membership fee", "Bought a new pair of running shoes", "Dinner at a fancy restaurant", "Streaming service subscription"],
+        "Debt Payments": ["Paid credit card bill", "Mortgage payment", "Car loan installment", "Personal loan repayment"],
+        "Savings and Investment": ["Transferred to savings account", "Invested in mutual funds", "Bought stocks", "Added to emergency fund"]
+    }
+    description = random.choice(descriptions[category])
+    
     goal = None  # Set to None for now, but this can be filled in as needed
     transaction_type = random.choice(TRANSACTION_TYPES)
 
@@ -35,11 +45,11 @@ def generate_random_transaction():
 # Function to categorize a transaction based on description
 def categorize_transaction(description):
     keywords = {
-        "Essentials": ["groceries", "rent", "utilities", "food"],
-        "Transportation": ["taxi", "bus", "fuel", "transport"],
-        "Lifestyle": ["shopping", "gym", "entertainment", "movies"],
-        "Debt Payments": ["loan", "credit card", "mortgage"],
-        "Savings and Investment": ["savings", "investment", "stocks"]
+        "Essentials": ["groceries", "rent", "utilities", "food", "household"],
+        "Transportation": ["taxi", "bus", "fuel", "transport", "car"],
+        "Lifestyle": ["shopping", "gym", "entertainment", "dinner", "subscription"],
+        "Debt Payments": ["loan", "credit card", "mortgage", "installment"],
+        "Savings and Investment": ["savings", "investment", "stocks", "fund"]
     }
     
     for category, words in keywords.items():
