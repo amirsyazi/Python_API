@@ -32,6 +32,22 @@ def generate_random_transaction():
 
     return transaction
 
+# Function to categorize a transaction based on description
+def categorize_transaction(description):
+    keywords = {
+        "Essentials": ["groceries", "rent", "utilities", "food"],
+        "Transportation": ["taxi", "bus", "fuel", "transport"],
+        "Lifestyle": ["shopping", "gym", "entertainment", "movies"],
+        "Debt Payments": ["loan", "credit card", "mortgage"],
+        "Savings and Investment": ["savings", "investment", "stocks"]
+    }
+    
+    for category, words in keywords.items():
+        for word in words:
+            if word in description.lower():
+                return category
+    return "Miscellaneous"
+
 @app.route('/')
 def home():
     return "API is working!"
@@ -73,6 +89,13 @@ def affordability_check():
 def generate_transaction():
     random_transaction = generate_random_transaction()
     return jsonify(random_transaction)
+
+@app.route('/categorize-transaction', methods=['POST'])
+def categorize():
+    data = request.json
+    description = data.get('description')
+    category = categorize_transaction(description)
+    return jsonify({"Category": category})
 
 if __name__ == '__main__':
     # Use Render's port
