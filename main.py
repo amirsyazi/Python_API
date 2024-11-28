@@ -46,7 +46,7 @@ def generate_random_transaction():
 def categorize_transaction(description):
     keywords = {
     "Essentials": ["groceries", "rent", "utilities", "food", "household"],
-    "Transportation": ["taxi", "bus", "fuel", "transport", "car", "shell","Primax"],
+    "Transportation": ["taxi", "bus", "fuel", "transport", "car", "shell","primax"],
     "Lifestyle": ["shopping", "gym", "entertainment", "dinner", "subscription"],
     "Debt Payments": ["loan", "credit card", "mortgage", "installment"],
     "Savings and Investment": ["savings", "investment", "stocks", "fund"]
