@@ -47,7 +47,7 @@ def categorize_transaction(description):
     keywords = {
         keywords = {
     "Essentials": ["groceries", "rent", "utilities", "food", "household"],
-    "Transportation": ["taxi", "bus", "fuel", "transport", "car", "shell","Primax","grab"],
+    "Transportation": ["taxi", "bus", "fuel", "transport", "car", "shell","Primax"],
     "Lifestyle": ["shopping", "gym", "entertainment", "dinner", "subscription"],
     "Debt Payments": ["loan", "credit card", "mortgage", "installment"],
     "Savings and Investment": ["savings", "investment", "stocks", "fund"]
