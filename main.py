@@ -45,11 +45,11 @@ def generate_random_transaction():
 # Function to categorize a transaction based on description
 def categorize_transaction(description):
     keywords = {
-        "Essentials": ["groceries", "rent", "utilities", "food", "household"],
-        "Transportation": ["taxi", "bus", "fuel", "transport", "car"],
-        "Lifestyle": ["shopping", "gym", "entertainment", "dinner", "subscription"],
-        "Debt Payments": ["loan", "credit card", "mortgage", "installment"],
-        "Savings and Investment": ["savings", "investment", "stocks", "fund"]
+        "Essentials": ["Bought groceries from SuperMart", "Paid monthly rent", "Paid electricity bill", "Bought household essentials"],
+        "Transportation": ["Filled up fuel at Shell", "Paid for a taxi ride", "Bought a monthly bus pass", "Car maintenance service", "PRIMAX 95"],
+        "Lifestyle": ["Gym membership fee", "Bought a new pair of running shoes", "Dinner at a fancy restaurant", "Streaming service subscription"],
+        "Debt Payments": ["Paid credit card bill", "Mortgage payment", "Car loan installment", "Personal loan repayment"],
+        "Savings and Investment": ["Transferred to savings account", "Invested in mutual funds", "Bought stocks", "Added to emergency fund"]
     }
     
     for category, words in keywords.items():
