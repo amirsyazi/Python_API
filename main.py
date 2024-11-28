@@ -79,12 +79,21 @@ def affordability_check():
     # Affordability logic
     if purchase_amount <= remaining_category_budget:
         if adjusted_budget >= monthly_savings_goal:
-            result = "You can afford this purchase and still meet your savings goal."
+            result = {
+                "message": "Great job! You can afford this purchase and still meet your savings goal for this month.",
+                "suggestion": "Consider setting aside any extra funds towards your long-term goals or an emergency fund."
+            }
         else:
-            result = "You can afford this purchase, but it will reduce your savings this month."
+            result = {
+                "message": "You can afford this purchase, but it will reduce your savings for this month.",
+                "suggestion": "Be cautious with additional expenses to avoid impacting your future goals."
+            }
         affordable = True
     else:
-        result = "You cannot afford this purchase within your budget."
+        result = {
+            "message": "You cannot afford this purchase within your current budget.",
+            "suggestion": "Consider postponing this purchase or reallocating funds from other categories."
+        }
         affordable = False
 
     # Return JSON response
