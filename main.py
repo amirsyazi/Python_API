@@ -20,7 +20,7 @@ def generate_random_transaction():
     # Generate a more realistic description based on the category
     descriptions = {
         "Essentials": ["Bought groceries from SuperMart", "Paid monthly rent", "Paid electricity bill", "Bought household essentials"],
-        "Transportation": ["Filled up fuel at Shell", "Paid for a taxi ride", "Bought a monthly bus pass", "Car maintenance service"],
+        "Transportation": ["Filled up fuel at Shell", "Paid for a taxi ride", "Bought a monthly bus pass", "Car maintenance service", "PRIMAX 95"],
         "Lifestyle": ["Gym membership fee", "Bought a new pair of running shoes", "Dinner at a fancy restaurant", "Streaming service subscription"],
         "Debt Payments": ["Paid credit card bill", "Mortgage payment", "Car loan installment", "Personal loan repayment"],
         "Savings and Investment": ["Transferred to savings account", "Invested in mutual funds", "Bought stocks", "Added to emergency fund"]
